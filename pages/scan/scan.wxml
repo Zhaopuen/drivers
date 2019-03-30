@@ -1,0 +1,32 @@
+<!--pages/task_list/task_list.wxml-->
+<!-- 订单列表 -->
+
+<view bindtap="outbtn">
+  <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title' catchtap="avatarClick">
+      <view class="user_img">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class='user_name'>{{driverName}}师傅</view>
+      <view class="user_num" style="display: {{driverOrder == 0 ? 'none' : 'display'}}">（{{driverOrder}}）</view>
+    </view>
+  </view>
+  <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y >
+    <view class='hidden'>
+    <!-- 头像的下拉框 -->
+      <view class="mask_box" wx:if="{{isShow}}">
+        <view class="mask_mid">
+          <span>请绑定车辆后查看</span>
+        </view>
+      </view>
+      <view class="scan_box">
+        <text>请扫描车内二维码</text>
+        <span>开始接单</span>
+        <view class="scan_scan" bindtap="scan">
+          <image src="../../images/ScanCode2.png"></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+

@@ -1,0 +1,47 @@
+<!--pages/binding/binding.wxml-->
+
+
+<view bindtap='outbtn'>
+  <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title' catchtap="avatarClick">
+      <view class="user_img">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class='user_name'>{{diverNames}}师傅</view>
+      <view class="user_num" style="display: {{driverOrders == 0 ? 'none' : 'block'}}">（{{driverOrders}}）</view>
+    </view>
+  </view>
+  <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y >
+    <view class='hidden'>
+    <!-- 头像的下拉框 -->
+      <view class="mask_box" wx:if="{{isShow}}">
+        <view class="mask_mid">
+          <span>请绑定车辆后查看</span>
+        </view>
+      </view>
+      <view class="binding_box">
+        <view class="binding_imgbox">
+          <view class="binding_img">
+            <image src="../../images/ysico.png"></image>
+          </view>
+        </view> 
+      
+        <view class="binding_carbox">
+          <view>
+            <text>当前车辆：</text>
+            <span>{{license}}</span>
+          </view>
+          <view>
+            <text>当前司机：</text>
+            <span>{{driverName}}</span>
+          </view>
+        </view>
+        <view class="binding_btn">
+          <button bindtap='bind_car'>确认绑定</button>
+          <button bindtap='close_bind'>取消</button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+

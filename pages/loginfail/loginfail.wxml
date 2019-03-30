@@ -1,0 +1,18 @@
+<!--pages/loginfail/loginfail.wxml-->
+<!-- <text>不是本单位员工</text> -->
+
+<view class="login_box">
+  <view class="login_mid">
+    <view class="login_img">
+      <image src="../../images/dlogin.png"></image>
+    </view>
+    <view class="login_content">
+      <span>对不起</span>
+      <text>您不是系统的司机，请联系管理认证
+0951-8765625</text>
+    </view>
+    <view class="login_btns">
+      <button class="loginBtn" bindtap="loginre">重新验证</button>
+    </view>
+  </view>
+</view>

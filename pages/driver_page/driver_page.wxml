@@ -1,0 +1,49 @@
+<!--pages/driver_page/driver_page.wxml-->
+<!-- 司机信息 -->
+<view class='driver_info'>
+  <view class='user_img'>
+    <!-- <image src='{{avatarUrl}}'></image> -->
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <view class='user_text'>
+    <view class='name'>{{driver_name}}</view>
+    <view class='phone'>{{driver_phone}}</view>
+  </view>
+  <view class='icoimg'>
+    <image src='../../images/changePhoneNumber.png'></image>
+  </view>
+</view>
+
+<!-- 完成数据 -->
+<view class='complete_num'>
+<navigator hover-class='none' url="../complete_order/complete_order?model=day">
+  <view class='complete_list'>
+    <view class='complete_text'>今日完成</view>
+    <view class='complete_number'>{{day_order}}</view>
+  </view>
+  </navigator>
+  <navigator hover-class='none' url="../complete_order/complete_order?model=month">
+  <view class='complete_list'>
+    <view class='complete_text'>本月完成</view>
+    <view class='complete_number'>{{month_order}}</view>
+  </view>
+  </navigator>
+</view>
+
+<!-- 其他功能 -->
+<view class='nav_function'>
+  <view class='nav_list'>
+    <view class='navlist_Box' bindtap='scan'>
+      <view class='navlist_ico'><image src='../../images/scanCode.png'></image></view>
+      <view class='navlist_title'>扫码换车</view>
+      <view class='navlist_text navlist_text_cola'>{{plate}}</view>
+    </view>
+  </view>
+  <view class='nav_list'>
+    <view class='navlist_Box'>
+      <view class='navlist_ico'><image src='../../images/video.png'></image></view>
+      <view class='navlist_title'>教你使用</view>
+      <view class='navlist_text'>视频教学</view>
+    </view>
+  </view>
+</view>

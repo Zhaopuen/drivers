@@ -1,0 +1,89 @@
+<!--pages/task_list/task_list.wxml-->
+<!-- 订单列表 -->
+
+<view bindtap="outbtn">
+  <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title' catchtap='avatarClick'>
+      <view class="user_img">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class='user_name'>{{driverNames}}师傅</view>
+      <view class="user_num" style="display: {{driverOrders == 0 ? 'none' : 'block'}}">（{{driverOrders}}）</view>
+    </view>
+  </view>
+  <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y >
+    <view class='hidden'>
+      
+      <!-- 头像的下拉框 -->
+      <view class="mask_box" wx:if="{{isShow}}">
+        <view class="mask_mid">
+          <button class="mask_test" bindtap='todayTest'>今日休息</button>
+          <button class="mask_today" bindtap="todayOrder">今日记录</button>
+          <text>{{carnumber}}</text>
+        </view>
+      </view>
+
+      <view class='task_content'>
+        <view class='ft_icon'>
+          <view class='tapicon'>
+        </view>
+        
+          <view class='ctneico'>
+            <view class='ctneimage'>
+              <image src='../../images/newCar.png'></image>
+            </view>
+            <view class='ct_num'>+2</view>
+            <view class='ct_jtico'>
+              <image src='../../images/hou.png'></image>
+            </view>
+          </view>
+        </view>
+        <view class='rt_task'>
+          <!-- <view class="tasklist {{item.tasflag? 'tasklist_act':''}} dialog-box dialog-box-3" data-index="{{index}}" wx:key="{{index}}" wx:for="{{tasklistdata}}" id="{{index}}" bindtap='tasklistClick'> -->
+          <view class="tasklist {{item.tasflag == false? 'tasklist_act':''}} dialog-box dialog-box-3" data-index="{{index}}" wx:key="{{index}}" wx:for="{{tasklistdata}}" id="{{index}}" bindtap='tasklistClick'>
+            <view class='seidicon'>
+              <!-- <text class='mintext'>{{item.distance}}</text> -->
+              <image src='../../images/add-s.png'></image>
+            </view>
+            <span class="triangle"></span>
+            <span class="triangless" style="{{item.tasflag == false? 'display:block':'display:none'}}"></span>
+            <view class='task_title'>{{item.shop_name}}  ({{item.number}}桶)</view>
+            <view class='task_text'>{{item.address}}{{item.house_number}}</view>
+            <view class='btn_task' style="{{item.tasflag == false ? 'display:block':'display:none'}}" catchtap='suspend' data-index="{{index}}" wx:key="{{index}}" id="{{index}}">接单</view>
+          </view>
+        </view>
+        <view class='taskinfo' wx:for="{{shopListon}}">
+          <view class='taskinfo_title' >{{shopListon.shop_name}}（{{shopListon.number}}桶）</view>
+          <view class='taskinfo_text'><text>当前</text> |  {{shopListon.address}}{{shopListon.house_number}}</view>
+        </view>
+      </view>
+      <!-- 店铺 -->
+      <view class='store'>
+        <view class='store_ico'>
+          <image src='../../images/locate.png'></image>
+        </view>
+        <view class='store_name' >{{shopname}}({{shopaddress}})</view>
+        <view class='store_ftico'>
+          <image src='../../images/call.png' bindtap="phoneClick"></image>
+          <image src='../../images/finish.png' bindtap="finishOrder"></image>
+        </view>
+      </view>
+      <!-- bottom提示 -->
+      <view class='hint'>
+        <view class='hint_ft'>
+          <view class='ft_text'>下一站
+            <text>5</text> 分钟后超时</view>
+          <view class='ft_bot'>全程需要 50 分钟</view>
+        </view>
+        <view class='hint_rt'>
+          <view class='rt_text'>
+          <text>{{sum_number}}</text>/{{sum_bucket}}</view>
+          <view class='rt_bot' bindtap='suspend'>暂停接单</view>
+        </view>
+      </view>    
+  
+
+    </view>
+  </scroll-view>
+</view>
+

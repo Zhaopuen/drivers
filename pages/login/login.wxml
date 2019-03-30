@@ -1,0 +1,14 @@
+<view class="login_box">
+  <view class="login_mid">
+    <view class="login_img">
+      <image src="../../images/dlogin.png"></image>
+    </view>
+    <view class="login_content">
+      <text>通过验证之后
+  您方可进行接单操作</text>
+    </view>
+    <view class="login_btns">
+      <button class="loginBtn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">验证授权</button>
+    </view>
+  </view>
+</view>

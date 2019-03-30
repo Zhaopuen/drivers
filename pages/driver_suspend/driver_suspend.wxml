@@ -1,0 +1,44 @@
+<!--driver_suspend.wxml-->
+<!-- 暂停停运 -->
+<view bindtap="outbtn">
+  <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title' catchtap="avatarClick">
+      <view class="user_img">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class='user_name'>{{driverNames}}师傅</view>
+      <view class="user_num">（45）</view>
+    </view>
+  </view>
+  <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y >
+    <view class='hidden'>
+      <view class='approve'>
+        <view class="countDownTimeView">
+          <view class="voteText">20/20</view>
+        </view>
+      </view>
+      <view class='content'>
+        <view class='add_to'>追加 <text>2</text> 桶</view>
+        <view class='call_btn_box'>
+          <view class='call_btn'>
+            <view class='call_num' bindtap="clearCar">清空车辆</view>
+          </view>
+        </view>
+        <view class='reset_num'>点击清空车辆后，将重新开始接单</view>
+      </view>
+
+      <!-- 头像的下拉框 -->
+      <view class="mask_box" wx:if="{{isShow}}">
+        <view class="mask_mid">
+          <button class="mask_test" bindtap='todayTest'>今日休息</button>
+          <button class="mask_today" bindtap="todayOrder">今日记录</button>
+          <text>宁A10086</text>
+        </view>
+      </view>
+
+
+    </view>
+  </scroll-view>
+</view>
+
+

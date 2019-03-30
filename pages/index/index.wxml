@@ -1,0 +1,42 @@
+<view bindtap="outbtn" wx:if="{{userinfo.name}}">
+  <view class='nav bg-white' style='height:{{nav_height}}px'>
+    <view class='nav-title' catchtap="avatarClick">
+      <view class="user_img">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class='user_name'>{{userinfo.name}}师傅</view>
+      <view class="user_num" style="display: {{userinfo.month_order == 0 ? 'none' : 'display'}}">（{{userinfo.month_order}}）</view>
+    </view>
+  </view>
+  <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y >
+    <view class='hidden'>
+    <!-- 头像的下拉框 -->
+      <view class="mask_box" wx:if="{{isShow}}">
+        <view class="mask_mid">
+          <span>请绑定车辆后查看</span>
+        </view>
+      </view>
+      <view class="scan_box">
+        <text>请扫描车内二维码</text>
+        <span>开始接单</span>
+        <view class="scan_scan" bindtap="scan">
+          <image src="../../images/ScanCode2.png"></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<view class="login_box" wx:if="{{!userinfo}}">
+  <view class="login_mid">
+    <view class="login_img">
+      <image src="../../images/dlogin.png"></image>
+    </view>
+    <view class="login_content">
+      <text>通过验证之后
+  您方可进行接单操作</text>
+    </view>
+    <view class="login_btns">
+      <button class="loginBtn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">验证授权</button>
+    </view>
+  </view>
+</view>

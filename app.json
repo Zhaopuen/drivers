@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/scan/scan",
+    "pages/task_list/task_list",
+    "pages/driver_suspend/driver_suspend",
+    "pages/map_nav/map_nav",
+    "pages/map_orders/map_orders",
+    "pages/binding/binding",
+    "pages/loginfail/loginfail",
+    "pages/driver_page/driver_page",
+    "pages/authorize/authorize"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于向商户端展示路线"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  }
+}

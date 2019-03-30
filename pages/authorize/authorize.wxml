@@ -1,0 +1,35 @@
+<view>
+ <scroll-view scroll-y="true" scroll-with-animation="true" scroll-x="false" scroll-into-view="list-{{idx}}" class="twnav">
+        <view class='twChild'>
+        <!-- <text>视频聊天室</text> -->
+        <view class='tellRoom'  wx:for="{{tellData}}" wx:for-index="idx" wx:for-item="li" wx:key="li" id='list-{{li.id}}'>
+          <view class='myHead'>
+            <image class='sayHead' wx-if='{{li.type=="question"||li.type=="message"}}' src='{{li.avatarurl}}'></image>
+            <image class='sayHead' wx-if='{{li.type=="answer"}}' src='{{li.content.orgLogo}}'></image>
+          </view>
+          <view class='tellDetail'>
+              <text class='name' wx-if='{{li.type=="question"||li.type=="message"}}'>{{li.displayName}}:</text>
+              <text class='name' wx-if='{{li.type=="answer"}}'>{{li.content.orgName}}回复{{li.displayName}}:</text>
+              <view wx-if='{{li.type=="answer"}}' class='answer'>
+                <view class='anQue'>{{li.content.question}}</view>
+                <view class='anAn'>{{li.content.answer}}</view>
+              </view>
+              <image wx-if='{{li.type=="question"}}' class='question' src='../../image/icon_quiz@2x.png' mode='widthFix'></image>
+              <text class='sayDetail' wx-if='{{li.type=="question"}}'>{{li.content.content}}</text>
+              <text class='sayDetail' wx-if='{{li.type=="message"}}'>{{li.content}}</text>
+          </view>
+        </view>
+        <view class='ccds'></view>
+        </view>
+  </scroll-view>
+      
+      <view class='btn' wx-if='{{tell==true&&promodal==false}}'>
+          <form bindreset="foo">
+            <input class="myinput"  placeholder="说点什么吧" bindinput="sayValue" focus='{{myinputing}}'/>
+            <button form-type="reset" class='sub' wx-if='{{isSend=="send"||isSend=="sureAsk"}}'  bindtap='sendMes'>发送</button>
+            <button form-type="reset" class='sub' wx-if='{{isSend=="ask"}}' bindtap='ask'>问</button>
+          </form>
+        </view>
+   </view>
+
+   <button form-type="reset" class='sub'  bindtap='sendMes'>发送</button>

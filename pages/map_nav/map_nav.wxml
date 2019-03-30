@@ -1,0 +1,127 @@
+<!--pages/map_nav/map_nav.wxml-->
+<!-- 订单信息 -->
+
+<view bindtap="outbtn">
+  <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title' catchtap="avatarClick">
+      <view class="user_img">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class='user_name'>{{driverNames}}师傅</view>
+      <view class="user_num" style="display: {{driverOrders == 0 ? 'none' : 'block'}}">（{{driverOrders}}）</view>
+    </view>
+  </view>
+  <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y >
+    <view class='hidden'>
+      <!-- <view class='order'>
+        <view class='order_info'>
+          <view class='order_title'>李师傅</view>
+          <view class='order_text'>                      
+            <image src='../../images/ysico.png'></image>
+            <text>宁A10086</text>
+          </view>
+        </view>
+        <view class='order_ico'>
+          <image src='../../images/dina.png'></image>
+          <view class='soli'>2</view>
+        </view>
+        <view class='order_icos'>
+          <image src='../../images/ScanCode2.png'></image>
+        </view>
+      </view> -->
+      <!--地图  -->
+      <view class="map_container">
+        <!-- <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location enable-zoom="{{enableZoom}}" enable-scroll="{{enableScroll}}"  style="width: 100%;"></map> -->
+        <map id="map" polyline="{{polyline}}" markers="{{markers}}" include-points="{{markers}}" style="width: 100%; height: 1040rpx;" scale="15"></map>
+      </view>
+
+      <!-- 店铺 -->
+      <!-- <view class='store'>
+        <view class='store_ico'>
+          <image src='../../images/add-s.png'></image>
+        </view>
+        <view class='store_name'>乔家烧卖（万达中心店）</view>
+        <view class='store_ftico'>
+          <image src='../../images/call.png'></image>
+          <image src='../../images/finish.png'></image>
+        </view>
+      </view> -->
+      <!-- bottom提示 -->
+      <!-- <view class='hint'>
+        <view class='hint_ft'>
+          <view class='ft_text'>下一站
+            <text>5</text> 分钟后超时</view>
+          <view class='ft_bot'>全程需要
+            <text>50</text> 分钟</view>
+        </view>
+        <view class='hint_rt'>
+          <view class='rt_text'>
+            <text>12</text>/20</view>
+          <view class='rt_bottom'>
+            <text class='pause'>暂停中</text>
+            <view class='rt_bot'>开启接单</view>
+          </view>
+        </view>
+      </view> -->
+
+      <view class='hint'>
+        <image src="../../images/address.png" class="addresss"></image>
+        <view class='hint_ft'>
+          
+          <view class='ft_text'>{{shopNames}}（{{hosueNumber}}）</view>
+          <view class='ft_bot'>接单时间{{ordertime}}</view>
+        </view>
+        <view class='hint_rt'>
+          <view class='rt_bottom'>
+            <view class='ccc' bindtap="finishOrder">
+              <image src="../../images/time.png"></image>
+            </view>
+            <view class='rt_bot' bindtap="backList">
+              <image src="../../images/menu.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 右下角固定 ico -->
+      <view class='navico' bindtap='launchAppError'>
+        <image src='../../images/navigation.png'></image>
+      </view>
+
+      <!-- 新订单 -->
+      <!-- <view class='approve'>
+        <view class="approve_ft {{approve_on_off? '':'approve_transition'}}">
+          <image class='approve_ico' src='../../images/message.png'></image>
+          <text class='approve_txt'>您有2个新订单，点击查看</text>
+          <image class='approve_ico2' src='../../images/end.png' bindtap='approveClick'></image>
+        </view>
+      </view> -->
+      
+      <view class='approve'>
+        <view class="approve_ft {{approve_on_off? '':'approve_transition'}}">
+          <view class="order_box">
+            <view class="order_left">
+              <text class="order_name">{{tasklistdata.shop_name}}（{{tasklistdata.number}}）</text>
+              <text class='approve_txt'>{{tasklistdata.address}}{{tasklistdata.house_number}}</text>
+            </view>
+            <view class='order_right'>
+              <button bindtap="order">接单</button>
+            </view>
+          </view>
+          
+        </view>
+      </view>
+
+      <!-- 头像的下拉框 -->
+      <view class="mask_box" wx:if="{{isShow}}">
+        <view class="mask_mid">
+          <button class="mask_test" bindtap='todayTest'>今日休息</button>
+          <button class="mask_today" bindtap="todayOrder">今日记录</button>
+          <text>{{carnumber}}</text>
+        </view>
+      </view>
+
+    </view>
+  </scroll-view>
+</view>
+

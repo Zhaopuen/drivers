@@ -1,0 +1,49 @@
+<!--pages/complete_order/complete_order.wxml-->
+
+
+<view bindtap="outbtn">
+  <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title' catchtap='avatarClick'>
+      <view class="user_img">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class='user_name'>{{driverNames}}师傅</view>
+      <view class="user_num" style="display: {{driverOrders == 0 ? 'none' : 'block'}}">（{{driverOrders}}）</view>
+    </view>
+  </view>
+  <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y >
+    <view class='hidden'>
+      <view class='order_content'>
+        <!-- <block wx:for="{{order_data}}" wx:for-item="v" wx:key="k">
+          <view class='order_list'>
+            <view class='order_toptxt'>
+              <text class='ft_text'>{{v.title}}（{{v.number}}桶）</text>
+              <text class='rt_time'>{{v.create_time}}</text>
+            </view>
+            <view class='order_site'>{{v.address}}</view>
+          </view>
+        </block>   -->
+        <block>
+          <view class='order_list' wx:for="{{historyOrder}}">
+            <view class='order_toptxt'>
+              <text class='ft_text'>{{item.shop_name}}（{{item.number}}桶）</text>
+              <text class='rt_time'>{{item.finish_time}}</text>
+            </view>
+            <view class='order_site'>{{item.address}}{{item.house_number}}</view>
+          </view>
+        </block> 
+        <button bindtap="returnOrder" class="callbackOrder">返回接单</button>
+      </view>
+
+<!-- 头像的下拉框 -->
+      <view class="mask_box" wx:if="{{isShow}}">
+        <view class="mask_mid">
+          <button class="mask_test" bindtap='todayTest'>今日休息</button>
+          <button class="mask_today" bindtap="todayOrder">今日记录</button>
+          <text>{{carnumber}}</text>
+        </view>
+      </view>
+
+    </view>
+  </scroll-view>
+</view>

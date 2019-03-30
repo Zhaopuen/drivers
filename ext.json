@@ -1,0 +1,19 @@
+{
+  "extEnable": true,
+  "extAppid": "wx7d4519464583e314",
+  "directCommit": false,
+  "ext": {
+    "name": "collection",
+    "host": "https://www.nx.tt",
+    "api_url": "https://www.nx.tt/addon/collection/api",
+    "socket_url": "wss://www.nx.tt/wss",
+    "uaid": 2,
+    "mpid": 6,
+    "udid": 0,
+    "tencent_map_key": "YB2BZ-3EQWI-DEVGA-5IUQN-KOATS-XRBNX"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  }
+}
